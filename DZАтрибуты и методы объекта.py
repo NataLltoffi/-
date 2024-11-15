@@ -1,39 +1,19 @@
-#  1. Создаем класс House.
 class House:
-    #  2. Вунтри класса House определяем метод __init__, в который передадаем название и кол-во этажей.
-    def __init__(self, name, number_of_floors):
-        #  3. Внутри метода __init__ создаем атрибуты объекта self.name и self.number_of_floors,
-        #  присваиваем им переданные значения.
+    def __init__(self,name, number_of_floors):
         self.name = name
-        self.number_of_floors = number_of_floors
+        self.number = number_of_floors
 
-    #  4. Создаем метод go_to с параметром new_floor и записываем логику внутри него на основе описания задачи 5_1.
     def go_to(self, new_floor):
-        if 1 < new_floor < self.number_of_floors:
-            for i in range(1, new_floor + 1):
+
+        if int(new_floor) < 1 or int(new_floor) > int(self.number):
+            print("Такого этажа не существует")
+        else:
+            i = 1
+            while i <= int(new_floor):
                 print(i)
-            else:
-                print('Такого этажа не существует')
+                i += 1
 
-    # 6. Дополняем класс House методом возврата кол-ва этажей здания self.number_of_floors
-    def __len__(self):
-        return self.number_of_floors
-
-    # 7. Дополняем класс House методом возврата строки: # "Название: <название>, кол-во этажей: <этажи>"
-    def __str__(self):
-        return f"Название: {self.name}, количество этажей: {self.number_of_floors}"
-
-
-#  5. Создаем объект класса House с названием и количеством этажей из примера.
-h1 = House('ЖК Эльбрус', 10)
-h2 = House('ЖК Акация', 20)
-
-#  Выводим на консоль строки
-# __str__
-print(h1)
-print(h2)
-
-#  Выводим на консоль кол-ва этажей зданий
-# __len__
-print(len(h1))
-print(len(h2))
+h1 = House('ЖК Горский', 18)
+h2 = House('Домик в деревне', 2)
+h1.go_to(5)
+h2.go_to(10)
